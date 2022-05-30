@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <script>
+            let N = Math.floor(Math.random()*5+12)
+
+            let ul = document.createElement('ul')
+
+            for(let i=0;i<N;i++){
+                let li = document.createElement('li')
+                li.innerHTML = 'element '+i
+                li.id = i
+                li.addEventListener('click',parsauimpar)
+                ul.appendChild(li)
+            }
+            document.body.appendChild(ul)
+
+            function parsauimpar(){
+                let l = this
+                let b = document.createElement('b')
+                b.style.color = 'purple'
+                b.addEventListener('click',stergere)
+                if(l.id % 2 == 0){
+                    b.innerHTML = 'element par'
+                }
+                else{b.innerHTML = 'element impar'}
+                l.appendChild(b)
+            }
+            function stergere(e){
+                e.stopPropagation()
+
+                this.remove()
+            }
+            
+        </script>
+    </body>
+</html>

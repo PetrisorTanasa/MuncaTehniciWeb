@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+<style>
+    #super .favorite:not(#super) .highlight { color: red; }
+    #super .highlight:nth-of-type(1):nth-last-of-type(1) { color: blue; }
+</style> 
+
+</head>
+<body>
+<ul class="shop-list" id="super"> 
+    <li><span>Lapte</span></li> 
+    <li class="favorite" id="must-buy"><span class="highlight">Sunt super!!</span></li> 
+</ul>
+</body>
+</html> 

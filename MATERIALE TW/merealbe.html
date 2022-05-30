@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .grid-container > div {
+                border: 8px double black;
+                font-size: 15px;
+            }
+            .item1 {
+                grid-area: item1;
+            }
+            .item2{
+                grid-area: item2;
+            }
+            .item3{
+                grid-area: item3;
+            }
+            .item4{
+                grid-area: item4;
+            }
+            .item5{
+                grid-area: item5;
+            }
+            .grid-container {
+                height: 50vh;
+                width: 250px;
+                border: 3px dotted blue;
+                display: grid;
+                grid-template-areas: '. item2 item5' 'item1 item3 item5' '. item4 item5';
+            }
+            @media (max-width:600px) and (max-height:500px) {
+                .grid-container{
+                    display:flex;
+                    flex-direction: column;
+                }
+                .grid-container > *{
+                    transition: font-size 3s;
+                }
+                .grid-container > *:hover{
+                    font-size: 30px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="grid-container">
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item3">3</div>  
+            <div class="item4">4</div>
+            <div class="item5">5</div>
+        </div>
+        
+    </body>
+</html>

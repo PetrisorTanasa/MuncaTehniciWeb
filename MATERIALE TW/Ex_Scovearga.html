@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <script>
+            let div = document.createElement("div");
+            div.className = "container";
+            function random_bg_color() {
+                let x = Math.floor(Math.random() * 256);
+                let y = Math.floor(Math.random() * 256);
+                let z = Math.floor(Math.random() * 256);
+
+                div.style.width = '50px'
+                div.style.height = '50px'
+
+                let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+                div.style.backgroundColor = bgColor;
+                div.innerHTML = 'asdads';
+                document.body.appendChild(div);
+            }
+            random_bg_color()
+        </script>
+    </body>
+</html>

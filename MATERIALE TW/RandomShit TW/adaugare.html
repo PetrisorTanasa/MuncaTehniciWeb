@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaugare</title>
+    <style>
+        label, input{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+  <form action="http://localhost:3000" method="post">
+    <label for="nume">Introduceti numele: </label>
+    <input type="text" name="nume" id="nume"> <br>
+    <label for="Populatie">Populatie: </label>
+      <input type="text" name="Populatie" id="Populatie"> <br>
+      <label for="esteCapitala">Este capitala.</label>
+    <input type="radio" name="Capitala" value="true" id="esteCapitala"> <br>
+    <label for="nuCapitala">Nu este capitala</label>
+    <input type="radio" name="Capitala" value="false" id="nuCapitala"> <br>
+      <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

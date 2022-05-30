@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .c1{background-color: red;}
+            .c2{background-color: aqua;}
+            .c3{background-color: blue;}
+            .c4{background-color: yellow;}
+            .c5{background-color: rgb(64, 224, 72);}
+        </style>
+    </head>
+    <body>
+        <script>
+
+            let data = new Date
+            let N = data.getMinutes()
+
+            if(parseInt(data.getMinutes()) > 10){
+                N = parseInt(data.getMinutes())
+            }
+            else{
+            N = 10
+            console.log('ok')
+            }
+
+            lista_clase =['c1','c2','c3','c4','c5']
+
+            for(let i=0;i<N;i++){
+                let div = document.createElement('div')
+
+                div.innerHTML="Tanasa Florin Petrisor"
+                div.style.width='250px'
+                let r = Math.random()*5
+                div.className = lista_clase[Math.floor(r)]
+                
+                div.addEventListener('click',dispare)
+
+                document.body.appendChild(div)
+            }
+
+            function dispare(e){
+                e.stopPropagation()
+
+                let nasol = document.getElementsByClassName(this.className)
+                console.log(nasol.length)
+                let lungime = nasol.length
+
+                for(let g=lungime-1;g>=0;g-=1){
+                    console.log(g)
+                    nasol[g].remove()
+                }
+            }
+
+            document.addEventListener('click',alerta)
+
+            function alerta(e){
+                alert(e.clientX + " " + e.clientY + " nu sunt coordonate ale unui div.")
+            }
+        </script>
+    </body>
+</html>

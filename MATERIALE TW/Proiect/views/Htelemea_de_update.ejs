@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1"></div>
+titlu:
+<input type="text" id="titlu">
+prop:
+<input type="text" id="prop">
+<button onclick="func()">Send</button>
+<script>
+    function func()
+{
+    const obj = {
+        titlu : "",
+        prop : ""
+    }
+
+    const xhr = new XMLHttpRequest();
+    let fileObject
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            document.getElementById('div1').innerText = xhr.response;
+            fileObject = xhr.response;
+        }
+    }
+    xhr.open('GET','Salvari.txt',false);
+    xhr.send();
+
+    obj.titlu = document.getElementById('titlu').value;
+    obj.prop = document.getElementById('prop').value;
+
+    console.log(fileObject)
+
+    fileObject = JSON.parse(fileObject);
+
+    if(obj.titlu !== '')
+        fileObject.titlu = obj.titlu;
+    if(obj.prop !== '')
+        fileObject.prop = obj.prop;
+
+
+    const requestParams = {
+        method : "PATCH",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(fileObject)
+    }
+
+    fetch('http://localhost:3000',requestParams);
+
+
+
+}
+</script>
+</body>
+</html>

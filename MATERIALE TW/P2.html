@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @media  only screen and (min-width: 1100px) {
+                #parinte{
+                    width: 1000px;
+                    height: 1000px;
+                    border-width: 2px;
+                    border-color: red;
+                    border-style: solid;
+                }
+                .copil{
+                    background-color: orange;
+                    height:30px;
+                    width: 30px;
+                    transition: width 2s, height 2s;
+                }
+                .copil:hover{
+                    width:60px;
+                    height:60px;
+                }
+                .activ{
+                    border-color:yellow;
+                    border: width 1px;
+
+                }
+                
+            }
+
+            @media only screen and (max-width: 1100px) {
+                .copil{
+                    display: none;
+                }
+                #parinte{
+                    width:50vw;
+                    height:500px;
+                    background-color: gray;
+                    border-style:none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        
+        <script>
+            let input= document.createElement('input')
+            input.type = 'range';
+            input.min = 4;
+            input.max = 10;
+            input.value = window.localStorage.getItem('valoareRange');
+
+            document.body.appendChild(input)
+
+            let div = document.createElement('div')
+            div.id = 'parinte';
+            div.style.backgroundColor = 'yellow'
+
+            document.body.appendChild(div)
+
+            let topu = window.getComputedStyle(div).getPropertyValue('width')
+            topu = topu.slice(0, -2);
+            topu = parseFloat(topu);
+
+            let leftu = window.getComputedStyle(div).getPropertyValue('height')
+            leftu = leftu.slice(0, -2);
+            leftu = parseFloat(leftu);
+            let p=0
+
+            input.addEventListener('change',Functie) 
+            
+            function Functie(e){
+
+            window.localStorage.setItem('valoareRange',input.value)
+
+            if(p!=0){
+                const boxes = document.querySelectorAll('.copil');
+
+                boxes.forEach(copil => {
+                    copil.remove();
+                });
+            }
+
+            for(let i=0;i<input.value;i++){
+
+                let el = document.createElement('div')
+
+                el.className = 'copil'
+
+                let x = Math.random()*leftu;
+                x = Math.floor(x);
+                let y = Math.random()*topu;
+                y = Math.floor(y)
+
+                el.style.backgroundColor = 'black'
+                el.style.position = 'absolute'
+                el.style.top = x+ 'px';
+                el.style.left = y+ 'px';
+
+                el.style.width = '100px'
+                el.style.height = '100px'
+
+                el.addEventListener('click',Deplasare)
+
+                document.body.appendChild(el)
+                p=5
+
+            }
+
+            var paras = document.getElementsByClassName('copil');
+
+            let inter = setInterval(Functieee,20000)
+            function Functieee(){
+                if(paras.length == 0){
+                    clearInterval(inter)
+                }
+                else{
+            while(paras[0]) {
+                paras[0].parentNode.removeChild(paras[0]);
+                break
+            }
+        }
+            }
+        }
+        let clickuri = 0
+        function Deplasare(){
+            var div=this;
+
+            clickuri += 1
+            window.localStorage.setItem('div-uri',clickuri)
+
+            const boxes = document.querySelectorAll('.activ');
+
+            boxes.forEach(box => {
+              box.classList.remove('activ');
+            });
+
+            div.classList.add("activ");
+            document.addEventListener("keydown", miscare);
+        
+        
+        }
+
+        function miscare(e){
+            if(e.key==='a'){
+                stanga();
+            } 
+        
+            if(e.key==='d'){
+                dreapta();  
+            }
+        }
+        
+        function dreapta(){
+            let div = document.getElementsByClassName('activ')
+            let poz = window.getComputedStyle(div[0]).getPropertyValue('left');
+            poz=poz.slice(0,-2);
+            poz=parseFloat(poz);
+            poz+=3;
+            div[0].style.left=poz+'px';
+            
+        }
+        function stanga(){
+            let div = document.getElementsByClassName('activ')
+            let poz = window.getComputedStyle(div[0]).getPropertyValue('left');
+            poz=poz.slice(0,-2);
+            poz=parseFloat(poz);
+            poz-=3;
+            div[0].style.left=poz+'px';
+        }
+        let gj = document.getElementById('parinte')
+        let yu = document.createElement('div')
+        document.body.appendChild(yu)
+
+        gj.addEventListener('click',Afisare)
+        function Afisare(){
+            yu.remove()
+            window.localStorage.setItem('div-uri',clickuri)
+            yu.innerHTML = window.localStorage.getItem('div-uri')
+            document.body.appendChild(yu)
+        }
+        </script>
+    </body>
+</html>

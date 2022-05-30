@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .buton{
+                border:solid;
+                width: 30px;
+                height: 30px;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+
+        <script>
+            let topu=0
+            let y = document.addEventListener('click',creare)
+            function creare(e){
+            let N = Math.random()*10+5;
+            N = Math.floor(N)
+            for(let i =0;i<N;i++){
+                let btn = document.createElement('button')
+
+                if(i%2==0){btn.style.backgroundColor = 'orange'}
+                else{btn.style.backgroundColor = 'purple'}
+
+                btn.style.top = topu+'px'
+                topu +=30
+
+                btn.className = 'buton'
+                btn.addEventListener('click',dispare)
+                document.body.appendChild(btn)
+                document.addEventListener('click',nr)
+            }
+            document.removeEventListener('click',creare)
+            }
+            function dispare(e){
+                e.stopPropagation()
+
+                let butoane = this
+                butoane.remove()
+            }
+
+            function nr(){
+                let butoane = document.getElementsByTagName('button')
+
+                alert(butoane.length)
+            }
+
+        </script>
+    </body>
+</html>

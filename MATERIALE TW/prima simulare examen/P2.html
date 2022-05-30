@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+    </style>
+</head>
+<body>
+    <script>
+        let N = Math.random()*5 + 12
+
+        let lista = document.createElement('ul')
+
+        for(let i=0;i<N;i++){
+            let div = document.createElement('li')
+
+            div.id = i
+            div.innerHTML = 'item '+i
+            div.addEventListener('click',parimpar)
+
+            lista.appendChild(div)
+        }
+
+        document.body.appendChild(lista)
+
+        function parimpar(){
+            let divu = this
+            let b = document.createElement('b')
+            b.style.color = 'purple'
+            b.id = 'b'+divu.id
+
+            if(divu.id % 2 == 0){
+                b.innerHTML = 'element par'
+            }
+            else{
+                b.innerHTML = 'element impar'
+            }
+            b.addEventListener('click',dispare)
+            divu.appendChild(b)
+            console.log('asdas')
+        }
+        function dispare(e){
+            e.stopPropagation()
+            let sters = document.getElementById(this.id)
+
+            sters.remove()
+            console.log(sters)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="checkbox" />stop
+        <ul>
+            <li>element1</li>
+            <li>element2</li>
+            <li>element3</li>
+            <li>element4</li>
+            <li>element5</li>
+            <li>element6</li>
+            <li>element7</li>
+            <li>element8</li>
+            <li>element9</li>
+            <li>element10</li>
+        </ul>
+        <script>
+            let elem = document.getElementsByTagName('li')
+            let casuta = document.getElementsByTagName('input')[0]
+            if(window.localStorage.getItem('string')!= null){
+                string = window.localStorage.getItem('string').split(' ')
+            for(let i=0;i<elem.length;i++){
+                elem[i].innerHTML = string[i]
+            }
+
+        }
+
+            var MYinter = setInterval(()=>{
+                if(casuta.checked != true){
+                let primu = elem[0].innerHTML
+                console.log(primu)
+                for(let i=0;i<elem.length-1;i++){
+                    elem[i].innerHTML=elem[i+1].innerHTML
+                }
+                console.log(primu)
+                elem[elem.length-1].innerHTML = primu
+                }
+                else{
+                    clearInterval(MYinter)
+                    let string=''
+                    for(let i=0;i<elem.length;i++){
+                        string += elem[i].innerHTML + ' '
+                    }
+                    window.localStorage.setItem('string',string)
+                }
+            },3000)
+        </script>
+    </body>
+</html>

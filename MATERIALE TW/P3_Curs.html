@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <form>
+            <input type="checkbox" value="true" />stop
+        </form>
+        <div>element1,element2,element3,element4</div>
+        <script>
+            let input = document.getElementsByTagName('input')[0]
+
+            let div = document.getElementsByTagName('div')[0]
+
+            div.innerHTML = window.localStorage.getItem('text')
+
+            let interval = setInterval( ()=>{
+                console.log(input.checked)
+                if(input.checked != true){
+                let div = document.getElementsByTagName('div')[0]
+
+                let elemente = div.innerHTML.split(',')
+                document.body.removeChild(div)
+                
+                let primu = elemente[0]
+
+                for(let i=0; i<elemente.length-1;i++){
+                    elemente[i] = elemente[i+1]
+                }
+                elemente[elemente.length-1] = primu
+
+                console.log(elemente)
+
+                let divu = document.createElement('div')
+
+                divu.innerHTML = elemente
+
+                document.body.appendChild(divu)
+
+                window.localStorage.setItem("text",document.getElementsByTagName('div')[0].innerHTML)
+            }
+            else{
+                clearInterval(interval)
+            let div = document.getElementsByTagName('div')[0]
+            }
+            },1000)
+        </script>
+    </body>
+</html>

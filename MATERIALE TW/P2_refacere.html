@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .stil{
+                color:red;
+                background-color: aquamarine;
+                width:300px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+
+            let N = Math.floor(Math.random()*10+10)
+            for(let i=0;i<N;i++){
+                let para = document.createElement('p')
+
+                para.innerHTML = 'Eu sunt paragraful '+i
+                para.addEventListener('click',schimbare)
+                para.className = 'stil'
+
+                document.body.appendChild(para)
+            }
+
+            function schimbare(e){
+                e.stopPropagation()
+
+                let parag = this
+                parag.style.color = 'rgb('+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+')'
+            }
+
+            document.addEventListener('click',resetare)
+            function resetare(){
+                let paragrafe = document.getElementsByTagName('p')
+                for(let i=0;i<paragrafe.length;i++){
+                    paragrafe[i].style.color ='red'
+                }
+            }
+        </script>
+    </body>
+</html>

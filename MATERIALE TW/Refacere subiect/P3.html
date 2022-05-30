@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="range" value="2" step="1" max="5" min="1"/>
+        <p>soare zi examen floare senin</p>
+        <p>zi examen floare soare senin</p>
+        <p>examen zi senin soare floare</p>
+        <p>senin soare floare examen zi</p>
+        <p>floare senin examen zi soare</p>
+        <script>
+            let input = document.getElementsByTagName('input')[0]
+
+            if(window.localStorage.getItem('value') != null){
+                console.log(document.getElementsByTagName('input')[0].value)
+                document.getElementsByTagName('input')[0].value = window.localStorage.getItem('value')
+            }
+
+            document.addEventListener('keydown',functie)
+            let p = document.getElementsByTagName('p')
+            function functie(e){
+                window.localStorage.setItem('value',5 - p.length)
+                if(e.key == 's' || e.key == 'z' || e.key == 'e' || e.key == 'f'){
+                    
+                    
+                    let interval = setInterval(()=>{
+                        let verif = 0
+                    for(let i=0;i<p.length;i++){
+                        if(p[i].innerHTML[0] == e.key){
+                            if(p[i].innerHTML.split(' ')>=input.value){
+                                p[i].remove()
+                                verif = 1
+                                break
+                            }
+                        }
+                    }
+                    window.localStorage.setItem('value',5 - p.length)
+                        if(verif==0){
+
+                            clearInterval(interval)
+                            console.log('s-a sters')
+                            console.log(p.length)
+                        }
+                    
+                    },2000)
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .dreptunghi{
+                border:solid;
+                width: 50px;
+                height:30px;
+                background-color: brown;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            let bodi = document.getElementsByTagName('body')[0]
+            bodi.style.display = 'flex'
+            bodi.style.flexDirection = 'row'
+            let leftu =0
+            for(let i=0;i<10;i++){
+                let div = document.createElement('div')
+
+                div.className = 'dreptunghi'
+                div.id=i
+                div.addEventListener('click',marire)
+
+                document.body.appendChild(div)
+            }
+            document.addEventListener('click',resetare)
+
+            function marire(e){
+                e.stopPropagation()
+
+                let divu = this
+                let height = window.getComputedStyle(divu).getPropertyValue('height')
+
+                height = height.slice(0,-2)
+                height = parseFloat(height)
+
+                height += 10
+
+                divu.style.height = height + 'px';
+            }
+
+            function resetare(){
+                for(let i=0;i<10;i++){
+                    let divul = document.getElementById(i)
+
+                    divul.style.height = '30px'
+                }
+            }
+            
+        </script>
+    </body>
+</html>

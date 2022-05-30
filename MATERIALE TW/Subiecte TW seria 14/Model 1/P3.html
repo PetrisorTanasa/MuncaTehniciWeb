@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="numar"/>
+        <p>examen la tehnici web</p>
+        <p>tehnici web la examen</p>
+        <p>web tehnici la examen</p>
+        <p>la</p>
+        <p>petrisor</p>
+        <p>tanasa e smecher</p>
+        <p>sunt un barosan</p>
+        <p>am plecat sa colindam</p>
+        <p>nu te supara frate</p>
+        <p>am loat bacul</p>
+        <script>
+            if(window.localStorage.getItem('sterse') !=  null){document.getElementsByTagName('input')[0].value = window.localStorage.getItem('sterse')}
+            document.addEventListener('keydown',stergere)
+
+            function stergere(e){
+
+                if(e.key == 's'){
+                    let input = document.getElementsByTagName('input')[0].value
+                    let counter = 0
+                    let interval = setInterval(()=>{
+                        let p = document.getElementsByTagName('p')
+                        let verif = 0
+                        for(let i=0;i<p.length;i++){
+                            if(p[i].innerHTML.split(" ").length > input){
+                                p[i].remove()
+                                
+                                verif = 1
+                                counter +=1
+                                break
+                                
+                            }
+                        }
+                        if(verif == 0){
+                            clearInterval(interval)
+                            window.localStorage.setItem('sterse',counter)}
+
+                    },1000)
+                }
+            }
+            
+        </script>
+    </body>
+</html>

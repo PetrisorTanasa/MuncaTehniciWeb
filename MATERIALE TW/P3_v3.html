@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="checkbox"/>stop
+        <ul>
+            <li>element1</li>
+            <li>element2</li>
+            <li>element3</li>
+            <li>element4</li>
+            <li>element5</li>
+            <li>element6</li>
+            <li>element7</li>
+            <li>element8</li>
+            <li>element9</li>
+            <li>element10</li>
+        </ul>
+        <script>
+            try{
+            let elem = document.getElementsByTagName('li')
+            let stringuri = window.localStorage.getItem('valori')
+
+            stringuri = stringuri.split(',')
+
+            for(let i=0;i<elem.length;i++){
+                elem[i].innerHTML = stringuri[i]
+            }}
+            catch{}
+            
+            let interval = setInterval( ()=>{
+                let input = document.getElementsByTagName('input')[0]
+                
+                if(input.checked){
+                    clearInterval(interval)
+                    let elem = document.getElementsByTagName('li')
+                    let stringuri = []
+                    for(let i=0;i<elem.length;i++){
+                        stringuri.push(elem[i].innerHTML)
+                    }
+                    window.localStorage.setItem('valori',stringuri)
+                    console.log(stringuri)
+                }
+                else{
+                let elem = document.getElementsByTagName('li')
+
+                let primu = elem[0].innerHTML
+
+                for(let i=0;i<elem.length-1;i++){
+                    elem[i].innerHTML = elem[i+1].innerHTML
+                }
+                elem[elem.length-1].innerHTML = primu
+            }
+            },3000)
+            
+        </script>
+    </body>
+</html> 

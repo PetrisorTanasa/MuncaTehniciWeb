@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="culoare" />
+        <button>0</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+
+        <script>
+            let nr;
+
+            document.addEventListener('keydown',Functie)
+
+            function Functie(e){
+                
+            let input = document.getElementById('culoare')
+
+            culoare = input.value;
+                if(e.key == '0'){
+                    nr = 0;
+                }
+                if(e.key == '1'){
+                    nr = 1;
+                }
+                if(e.key == '2'){
+                    nr = 0;
+                }
+                if(e.key == '3'){
+                    nr = 1;
+                }
+                if(e.key == '4'){
+                    nr = 0;
+                }
+                if(e.key == '5'){
+                    nr = 1;
+                }
+                if(e.key == '6'){
+                    nr = 0;
+                }
+                if(e.key == '7'){
+                    nr = 1;
+                }
+                if(e.key == '8'){
+                    nr = 0;
+                }
+                if(e.key == '9'){
+                    nr = 1;
+                }
+                var MYinterval = setInterval(() => {
+                    let but = Array.from(document.getElementsByTagName('button'))
+    
+                    console.log(nr)
+    
+                    if(nr>9){
+                        clearInterval(MYinterval)
+                        }
+                    else{
+
+                    but[nr].style.backgroundColor = culoare
+    
+                    nr += 2
+                    }
+                },3000)
+            }
+
+            
+        </script>
+    </body>
+</html>

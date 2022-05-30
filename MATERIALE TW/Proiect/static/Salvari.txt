@@ -1,0 +1,1 @@
+{"nume":"ghe","nrObiecte":1}{"nume":"tre","nrObiecte":1}

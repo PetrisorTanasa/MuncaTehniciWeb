@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .button{
+                border: dotted;
+                border-width: 3px;
+                width: 50px;
+                height:50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <script>
+            let id = 0
+            document.addEventListener('click',creare)
+            function creare(e){
+                let btn = document.createElement('button')
+                btn.className = 'button'
+
+                btn.style.position = 'absolute'
+                btn.style.left = e.clientX + 'px'
+                btn.style.top = e.clientY + 'px'
+
+                let r = Math.random()*255
+                let g = Math.random()*255
+                let b = Math.random()*255
+                r=Math.floor(r)
+                g=Math.floor(g)
+                b=Math.floor(b)
+
+                btn.style.backgroundColor = 'rgb('+r+','+g+','+b+')'
+                id += 1
+                btn.id = id
+
+                btn.addEventListener('click',SchimbareBody)
+
+                document.body.appendChild(btn)
+            }
+
+            function SchimbareBody(){
+                event.stopPropagation()
+
+                let button = this
+
+                let bodi =  document.getElementsByTagName('body')[0]
+
+                bodi.style.backgroundColor = button.style.backgroundColor
+
+                button.innerHTML= button.id
+            }
+        </script>
+    </body>
+</html>

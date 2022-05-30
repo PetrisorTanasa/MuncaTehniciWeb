@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+.c1{background-color: blue;}
+.c2{background-color: rgb(0, 255, 13);}
+.c3{background-color: rgb(255, 94, 0);}
+.c4{background-color: rgb(255, 0, 0);}
+.c5{background-color: rgb(195, 0, 255);}
+        </style>
+    </head>
+    <body>
+        <script>
+let date = new Date
+let N = Math.max(10,date.getMinutes())
+let lista=['c1','c2','c3','c4','c5']
+
+for(let i=0;i<N;i++){
+    let div = document.createElement('div')
+    div.className = lista[Math.floor(Math.random()*5)]
+    div.innerHTML = 'Tanasa Florin Petrisor'
+    div.style.width = '300px'
+    div.addEventListener('click',stergere)
+    document.body.appendChild(div)
+}
+function stergere(e){
+    e.stopPropagation()
+    let divuri = document.getElementsByClassName(this.className)
+    for(let i=0;i<divuri.length;i++){
+        divuri[i].style.display = 'none'
+    }
+}
+
+document.addEventListener('click',pozitie)
+
+function pozitie(e){
+    alert(e.clientY)
+}
+
+        </script>
+    </body>
+</html>

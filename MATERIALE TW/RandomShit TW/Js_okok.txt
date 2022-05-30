@@ -1,0 +1,15 @@
+
+function visit(ext){
+    window.location.href='http://localhost:3000/'+ext;
+}
+
+function view(){
+    const xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function (){
+        if(xhttp.readyState === 4 && xhttp.status === 200)
+            document.getElementById('div1').innerText = xhttp.response;
+    }
+    xhttp.open('GET','http://localhost:3000/sendOrase')
+    xhttp.send()
+
+}

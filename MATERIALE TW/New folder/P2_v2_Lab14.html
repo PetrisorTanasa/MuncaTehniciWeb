@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+.c1{background-color: aquamarine;}
+.c2{background-color: rgb(255, 178, 127);}
+.c3{background-color: rgb(255, 127, 133);}
+.c4{background-color: rgb(178, 255, 127);}
+.c5{background-color: rgb(150, 127, 255);}
+        </style>
+    </head>
+    <body>
+        <script>
+            let date =  new Date
+            let N = Math.max(10,date.getMinutes())
+            console.log(N)
+
+            let clase = ['c1','c2','c3','c4','c5']
+
+            for(let i=0;i<N;i++){
+                let div = document.createElement('div')
+                div.className = clase[Math.floor(Math.random()*5)]
+                div.style.width = '300px'
+                div.innerHTML = 'Tanasa Florin Petrisor'
+                div.addEventListener('click',stergere)
+                document.body.appendChild(div)
+            }
+
+            function stergere(e){
+                e.stopPropagation()
+                let divu = this
+                let deSters = document.getElementsByClassName(divu.className)
+                console.log(deSters)
+                for(let i=0;i<deSters.length;i++){
+                    deSters[i].style.display = 'none'
+                }
+            }
+
+            document.addEventListener('click',pozitii)
+
+            function pozitii(e){
+                alert("Ati apasat la pozitia X:"+e.clientX+" si Y:"+e.clientY)
+            }
+        </script>
+    </body>
+</html>

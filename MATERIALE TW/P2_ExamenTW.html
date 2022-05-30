@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body onload="creatie()">
+        <script>
+            function creatie(){
+            let bodi = document.getElementsByTagName('body')[0]
+            bodi.style.display = 'flex';
+            bodi.style.flexDirection = 'row'
+            let i =0;
+            for(i=0;i<10;i++){
+                let div = document.createElement('div')
+
+                div.className = 'dreptunghi'
+                div.style.borderStyle = 'solid'
+                div.style.width = '20px';
+                div.style.height = '20px';
+                div.style.backgroundColor = 'red'
+                div.style.marginLeft = '10px'
+
+                div.addEventListener('click',Creste)
+
+                document.body.appendChild(div)
+            }
+
+            function Creste(e){
+                e.stopPropagation()
+
+                let divu = this;
+                let marime = getComputedStyle(divu).getPropertyValue('height')
+
+                marime = marime.slice(0,-2)
+                marime = parseFloat(marime);
+                marime += 10;
+                divu.style.height = marime+'px';
+            }
+        }
+        document.addEventListener('click',reset)
+        function reset(){
+            console.log('ok')
+            let array = Array.from(document.getElementsByClassName('dreptunghi'))
+
+            for(let i=0;i<array.length;i++){
+                array[i].style.borderStyle = 'solid'
+                array[i].style.width = '20px';
+                array[i].style.height = '20px';
+                array[i].style.backgroundColor = 'red'
+                array[i].style.marginLeft = '10px'
+            }
+        }
+        </script>
+    </body>
+</html>

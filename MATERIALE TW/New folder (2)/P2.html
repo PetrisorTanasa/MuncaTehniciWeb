@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .buton{
+                border:solid;
+                height:30px;
+                width:30px;
+                position:absolute;
+            }
+            .buton:nth-child(2n){
+                background-color: orange;
+            }
+            .buton:nth-child(2n+1){
+                background-color: purple;
+            }
+
+        </style>
+    </head>
+    <body>
+        <script>
+            document.getElementsByTagName('body')[0].style.display = 'flex'
+            document.getElementsByTagName('body')[0].style.flexDirection = 'column'
+            let N = Math.floor(Math.random() * 10 + 5)
+
+            document.addEventListener('click',aparitie)
+            let ok=0
+            let topu=0
+
+            function aparitie(){
+                if(ok == 0){
+                for(let i=0;i<N;i++){
+                    let btn = document.createElement('button')
+                    btn.className = 'buton'
+                    btn.style.top = topu +'px'
+                    topu += 35
+                    btn.addEventListener('click',dispare)
+                    document.body.appendChild(btn)
+                    ok = 1
+                }
+                }
+                else{
+                    alert(document.getElementsByTagName('button').length)
+                }
+            }
+
+            function dispare(e){
+                e.stopPropagation()
+
+                this.remove()
+            }
+        </script>
+    </body>
+</html>

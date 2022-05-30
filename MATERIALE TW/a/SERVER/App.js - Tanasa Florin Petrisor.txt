@@ -1,0 +1,57 @@
+const express = require('express');
+const app = express();
+const hostname = '127.0.0.1';
+const port = 3000;
+const path = require("path")
+var lista = ['gutui','pere','aparate','molii']
+
+app.get('/',(req,res) => {
+  res.sendFile(path.join(__dirname, "/views/index.html"));
+});
+
+app.get("/about", (req,res) => {
+  res.send("about")
+});
+
+app.get("/product", (req,res) => {
+  res.send(lista)
+});
+
+app.get("/products/:produsId", (req,res) => {
+  const produsId = req.params.produsId
+  res.send(lista[produsId])
+});
+
+app.get("/adaugare/:produsId", (req,res) => {
+  const produsId = req.params.produsId
+  lista.push(produsId)
+  res.send(lista)
+})
+
+function arrayRemove(arr, value) {
+ 
+  return arr.filter(function(geeks){
+      return geeks != value;
+  });
+
+}
+
+app.get("/stergere/:produsId", (req,res) => {
+  const produsId = req.params.produsId
+  var l=[],i;
+  for(i=0;i<lista.length;i++){
+    l[i] = lista[i]
+  }
+  lista = arrayRemove(lista,produsId)
+  for(i=0;i<l.length;i++){
+    if(l[i] == lista[i]){
+      res.send("Nu exista")
+      return
+    }
+  }
+  res.send(lista)
+})
+
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});

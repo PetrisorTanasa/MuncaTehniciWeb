@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+                #container{
+                    margin-left:auto;
+                    margin-right:auto;
+                    width:500px;
+                    height: 500px;
+                    background-color: green;
+                    border:solid;
+                    border-width: 1px;
+                    border-color:black;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                    grid-template-rows: 1fr;
+                }
+                .patrat:nth-child(2n){
+                    
+                    border:solid;
+                    border-color:red;
+                }
+                .patrat:nth-child(2n+1){
+                    
+                    border:solid;
+                    border-color:blue;
+                }
+            @media (max-width:800px){
+                #container{
+                    width:50vw;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                }
+                @keyframes schimbare {
+                    0%{background-color: white;}
+                    50%{background-color: yellow;}
+                    100%{background-color: white;}
+                }
+                body{
+                    animation: schimbare 1s;
+                    animation-iteration-count: infinite;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="patrat"></div>
+            <div class="patrat"></div>
+            <div class="patrat"></div>
+            <div class="patrat"></div>
+            <div class="patrat"></div>
+        </div>
+        <script>
+
+        </script>
+    </body>
+</html>

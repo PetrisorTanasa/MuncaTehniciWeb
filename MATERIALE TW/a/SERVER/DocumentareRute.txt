@@ -1,0 +1,14 @@
+http://localhost:3000/
+	Ne aduce pe pagina de inceput a site ului
+
+http://localhost:3000/create
+	Creeaza un review care va fi salvat in fisierul txt "Salvari.txt" sub JSON ul {"nume":"";"review":""}
+
+http://localhost:3000/reviewuri
+	Ia toate JSON urile din fisierul txt "Salvari.txt" si le afiseaza
+
+http://localhost:3000/update
+	Cauta prin JSON urile din fisierul txt "Salvari.txt", cauta numele al carui review trebuie updatat si modifica valoarea review.
+
+http://localhost:3000/delete
+	Cauta prin JSON urile din fisierul txt "Salvari.txt", cauta numele care trebuie sters si sterge din fisier tot JSON ul

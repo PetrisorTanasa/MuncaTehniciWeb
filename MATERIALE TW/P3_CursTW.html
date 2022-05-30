@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="button" id="cifre"/>
+        <script>
+            let click = window.localStorage.getItem("clickuri")
+
+            document.addEventListener('keydown',apasare)
+            let f =document.createElement('div')
+            f.innerHTML = "Au fost apasate un numar de " +window.localStorage.getItem('clickuri')+" taste numerice"
+            document.body.appendChild(f)
+
+            function apasare(e){
+                console.log(e.key)
+                if(e.key == parseInt(e.key, 10)){
+                    console.log('ok')
+                    let btn = document.getElementById('cifre')
+                    btn.value = e.key + "" +btn.value
+                    click += 1
+                }
+                else{
+                    window.localStorage.setItem('clickuri',click)
+                    let interval = setInterval(()=>{
+                        let btn = document.getElementById('cifre')
+                        btn.value = btn.value.substring(1)
+                        if(btn.value.length == 0){clearInterval(interval)}
+                    },3000)
+                }
+            }
+
+        </script>
+    </body>
+</html>

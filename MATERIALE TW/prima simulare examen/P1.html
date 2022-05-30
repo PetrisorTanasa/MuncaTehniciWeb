@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #container{
+            height:300px;
+            width:  60vw;
+            display:grid;
+            border:dotted;
+            border-color: red;
+            border-width: 2px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            transition:border 1500ms , border-color 1500ms;
+        }
+        #container:hover{
+            border:solid;
+            border-color: blue;
+        }
+        #container > *{
+            border:solid;
+            border-width: 1px;
+        }
+        @media (max-width:600px){
+            #container{
+                width:100vw
+            }
+            #container > *{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div>1</div>
+        <div>2</div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>
