@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            .buton{
+                border:dotted;
+                border-width: 3px;
+                width:30px;
+                height: 30px;
+                position:absolute
+            }
+            body {
+                width:700px;
+                height:700px;
+                border:solid;
+                border-width: 3px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <script>
+            document.addEventListener('click',create)
+
+            function create(e){
+                let btn = document.createElement('button')
+                btn.className = 'buton'
+                btn.style.top = e.clientY +'px'
+                btn.style.left = e.clientX +'px'
+                btn.style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')'
+                btn.addEventListener('click',culoare)
+                function culoare(e){
+                    console.log('k')
+                    e.stopPropagation()
+                    let body = document.getElementsByTagName('body')[0]
+                    let buton = this
+                    body.style.backgroundColor = buton.style.backgroundColor
+                }
+                document.body.appendChild(btn)
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #parinte{
+                width:75vw;
+                height:50vh;
+                border:solid;
+                border-width: 3px;
+                display:grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+            #parinte > *:nth-child(2n){
+                border:solid;
+                border-color:blueviolet;
+                background-color: orange;
+                transition: background-color 2s;
+            }
+            #parinte > *:nth-child(2n+1){
+                border:solid;
+                border-color:blueviolet;
+                background-color: yellow;
+                transition:background-color 2s;
+            }
+            #parinte > *:hover{
+                background-color: red;
+            }
+            @media (min-width:400px) and (max-width:700px){
+                #parinte{
+                    grid-template-columns: 1fr 1fr;
+                }
+                #parinte > *:nth-child(2n+1){
+                    border:none;
+                }
+                #parinte > *:nth-child(2n){
+                    border:none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="parinte">
+            <div id="div">Div</div>
+            <div id="div">Div</div>
+            <div id="div">Div</div>
+            <div id="div">Div</div>
+        </div>
+        <script>
+
+        </script>
+    </body>
+</html>

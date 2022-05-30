@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            #parinte{
+                height:150px;
+                width:50vw;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                grid-template-areas:
+                'div1 . div2'
+                '. div3 .'
+                'div4 div4 div4';
+            }
+            #parinte > *{
+                border:dotted;
+                border-width: 2px;
+                border-color: black;
+            }
+
+            #div1{grid-area:div1}
+            #div2{grid-area:div2}
+            #div3{grid-area:div3}
+            #div4{grid-area:div4}
+            #div5{grid-area:div5}
+
+            @media (min-width:300px) and (max-width:600px){
+                #parinte{
+                    grid-template-rows: 1fr;
+                    grid-template-columns: 1fr ;
+                    grid-template-areas: 'div3';
+                }
+                #div1{display:none}
+                #div2{display:none}
+                #div4{display:none}
+                @keyframes ex {
+                    0%{background-color: white;}
+                    50%{background-color: yellow;}
+                    100%{background-color: white;}
+                }
+
+                body{
+                    animation-name: ex;
+                    animation-duration: 1s;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: infinite;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="parinte">
+            <div id="div1">Div1</div>
+            <div id="div2">Div2</div>
+            <div id="div3">Div3</div>
+            <div id="div4">Div4</div>
+        </div>
+        <script>
+
+        </script>
+    </body>
+</html>

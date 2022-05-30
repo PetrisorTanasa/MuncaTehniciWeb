@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input id="culoare"/>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <script>
+            if(window.localStorage.getItem('culoare') != null){document.body.style.backgroundColor = window.localStorage.getItem('culoare')}
+
+            document.addEventListener('keydown',culoare)
+            function culoare(e){
+                
+                if(e.key == 1||e.key == 2||e.key == 3||e.key == 4||e.key == 5||e.key == 6||e.key == 7||e.key == 8||e.key == 9){
+                let input = document.getElementById('culoare').value 
+                window.localStorage.setItem('culoare',input)
+                let btn = document.getElementsByTagName('button')
+                let i
+                let inceput = parseFloat(e.key)-2
+                let interval = setInterval(() =>{
+                    for(i= inceput;i<9;i++){
+                        i++
+                        btn[i].style.backgroundColor = input + ''
+                        break
+                    }
+                    inceput += 2
+                    console.log(i)
+                    if(i==8 || i==9){clearInterval(interval)}
+                },1000)
+            }
+            }
+        </script>
+    </body>
+</html>

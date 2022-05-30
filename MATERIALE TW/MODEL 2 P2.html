@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .patrat{
+                border:solid;
+                width:30px;
+                height:30px;
+                background-color: green;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            let N = Math.floor(Math.random()*5 + 5)
+
+            let topu = 0
+
+            for(let i=0;i<N;i++){
+                let div = document.createElement('div')
+
+                div.className = 'patrat'
+                div.addEventListener('click',deplasare)
+                div.style.top = topu+'px'
+                topu += 32
+
+                document.body.appendChild(div)
+            }
+
+            function deplasare(e){
+                e.stopPropagation()
+
+                let divu = this
+                let poz = getComputedStyle(divu).getPropertyValue('left')
+                console.log(poz)
+
+                poz = poz.slice(0,-2)
+                poz = parseFloat(poz)
+                poz += 10
+                console.log(poz)
+                divu.style.left = poz + 'px'
+            }
+
+            document.addEventListener('click',teleportare)
+
+            function teleportare(e){
+                let poz = Math.floor(Math.random()*N)
+
+                let divul = document.getElementsByTagName('div')[poz]
+
+                divul.style.top = e.clientY + 'px'
+                divul.style.left = e.clientX + 'px'
+            }
+        </script>
+    </body>
+</html>
